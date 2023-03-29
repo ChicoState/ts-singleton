@@ -55,4 +55,14 @@ describe("Leaderboard should be a singleton", ()=> {
     duplicate3.add_leader("first",5);
     expect(initial3.as_string()).toBe(duplicate3.as_string());
   });
+  test("Three instances should be identical", () => {
+    let instance1: Leaderboard = Leaderboard.get_instance();
+    instance1.add_leader("Leader",24);
+    let instance2: Leaderboard = Leaderboard.get_instance();
+    instance2.add_leader("Other", 9);
+    let instance3: Leaderboard = Leaderboard.get_instance();
+    instance3.add_leader("Another",12);
+    expect(instance1).toBe(instance2);
+    expect(instance2).toBe(instance3);
+  });
 });
